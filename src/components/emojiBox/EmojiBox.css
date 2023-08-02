@@ -1,0 +1,8 @@
+.emoji-box {
+  width: 320px;
+  height: 400px;
+  overflow: hidden;
+}
+.emoji-item {
+  width: 43px;
+}
