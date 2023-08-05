@@ -1,16 +1,10 @@
-import { useEffect, useReducer, useState } from "react";
-import Pagination from "../pagination/Pagination";
+import React, { useEffect, useState } from "react";
 import "./EmojiBox.css";
-import PaginationReducer from "../../reducers/PaginationReducer";
 const EmojiBox = () => {
   const [emojiData, setEmojiData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [pageCount, setPageCount] = useState(0);
-  const [state, dispatch] = useReducer(PaginationReducer, {
-    activePage: 1,
-  });
-  let activePageNumber = Number(state.activePage);
-  console.log("active in emoji box:", activePageNumber);
+
   const fetchApi = async () => {
     const response = await fetch(
       "https://run.mocky.io/v3/b86e5b36-2f73-4c3d-a06d-da1438fea4cf"
@@ -26,7 +20,6 @@ const EmojiBox = () => {
 
   useEffect(() => {
     setPageCount(calcPageCount());
-    console.log("page count: ", pageCount);
   }, [emojiData]);
 
   const calcPageCount = () => {
@@ -36,13 +29,26 @@ const EmojiBox = () => {
     return parseInt(emojiData.length / 84);
   };
 
+  let pageButtons = [];
+  const [activePageNumber, setActivePageNumber] = useState(1);
+
+  for (let i = 1; i <= pageCount; i++) {
+    pageButtons.push(i);
+  }
+
+  const handlePageClick = (item) => {
+    let NewActivePageNumber = item;
+    setActivePageNumber(NewActivePageNumber);
+    console.log("activePageNumber:", activePageNumber);
+  };
+
   return (
-    <div>
+    <React.Fragment>
       <div className="emoji-box ms-auto me-auto d-flex flex-wrap justify-content-center">
         {loading
           ? "loading"
           : emojiData
-              .slice(0 * activePageNumber, 84 * state.activePage + 1)
+              .slice(84 * activePageNumber - 84, 84 * activePageNumber)
               .map((item, index) => {
                 return (
                   <div key={index} className="emoji-item p-1">
@@ -51,8 +57,34 @@ const EmojiBox = () => {
                 );
               })}
       </div>
-      <Pagination pageCount={pageCount} />
-    </div>
+      <nav aria-label="Page navigation example" className="mt-3 ">
+        <ul className="pagination ms-auto me-auto justify-content-center">
+          {pageButtons.map((item, index) => {
+            return (
+              <li
+                className="page-item d-flex align-items-center justify-content-center "
+                key={index}
+              >
+                <button
+                  type="button"
+                  className={
+                    item === activePageNumber
+                      ? "page-link p-1 active"
+                      : "page-link p-1"
+                  }
+                  onClick={() => {
+                    handlePageClick(item);
+                  }}
+                >
+                  {item}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+      {/* <Pagination pageCount={pageCount} /> */}
+    </React.Fragment>
   );
 };
 

@@ -1,10 +1,11 @@
-import { useState, useReducer, useEffect } from "react";
-import PaginationReducer from "../../reducers/PaginationReducer";
+import { useState, useReducer, useEffect, useContext } from "react";
+
 import "./Pagination.css";
+
 const Pagination = ({ pageCount }) => {
   let pageButtons = [];
   const [activePageNumber, setActivePageNumber] = useState(1);
-  const [state, dispatch] = useReducer(PaginationReducer, { activePage: 1 });
+
   for (let i = 1; i <= pageCount; i++) {
     pageButtons.push(i);
   }
@@ -12,14 +13,10 @@ const Pagination = ({ pageCount }) => {
   const handlePageClick = (item) => {
     const clickedPageNumber = Number(item);
     setActivePageNumber(clickedPageNumber);
+    console.log("activePageNumber:", activePageNumber);
+    console.log("clickedPageNumber:", clickedPageNumber);
   };
 
-  useEffect(() => {
-    dispatch({
-      type: "ACTIVE_PAGE",
-      activePage: activePageNumber,
-    });
-  }, [activePageNumber]);
   return (
     <nav aria-label="Page navigation example" className="mt-3 ">
       <ul className="pagination ms-auto me-auto justify-content-center">

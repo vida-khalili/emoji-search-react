@@ -6,3 +6,19 @@
 .emoji-item {
   width: 43px;
 }
+
+.page-item {
+  font-size: 12px;
+}
+.page-link {
+  width: 30px;
+}
+
+.page-link:focus {
+  box-shadow: none !important;
+  font-weight: bold;
+}
+
+.active {
+  background-color: #e9ecef;
+}
