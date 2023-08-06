@@ -4,3 +4,42 @@
 .form-control:focus {
   box-shadow: none !important;
 }
+
+.search-result {
+  height: 50px;
+  width: 500px;
+  margin: 0 auto;
+  /* display: grid !important;
+  grid-template-columns: repeat(auto-fill, 45px); */
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+.emoji-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 40px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
