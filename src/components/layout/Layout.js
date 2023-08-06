@@ -3,7 +3,7 @@ import Footer from "./Footer";
 
 const Layout = ({ children }) => {
   return (
-    <div className="container-sm d-grid  justify-items-center position-relative p-5">
+    <div className="container-xs d-grid  justify-items-center position-relative p-3">
       {children}
       <Footer />
     </div>

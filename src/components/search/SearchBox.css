@@ -1,3 +1,6 @@
+.search-box {
+  max-width: 500px;
+}
 .form-control:focus {
   box-shadow: none !important;
 }

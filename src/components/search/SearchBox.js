@@ -3,7 +3,7 @@ import { BsSearch } from "react-icons/bs";
 
 const SearchBox = () => {
   return (
-    <div className="SearchBox d-flex bg-white rounded justify-content-center align-items-center gap-3 border-1 border-black border p-2 w-25 mb-2 ms-auto me-auto">
+    <div className="search-box d-flex bg-white rounded justify-content-center align-items-center gap-3 border-1 border-black border p-2 w-100 mb-2 ms-auto me-auto">
       <input
         type="email"
         className="form-control border-0 outline-0"

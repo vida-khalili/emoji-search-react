@@ -1,10 +1,14 @@
 .emoji-box {
-  width: 320px;
-  height: 400px;
-  overflow: hidden;
+  max-width: 500px;
+  min-height: 500px;
+  overflow: auto;
 }
 .emoji-item {
-  width: 43px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 40px;
 }
 
 .page-item {
