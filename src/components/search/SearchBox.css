@@ -15,14 +15,6 @@
   overflow-x: auto;
 }
 
-.emoji-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 40px;
-}
-
 /* width */
 ::-webkit-scrollbar {
   width: 5px;
@@ -42,4 +34,20 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+.search-container {
+  margin: 0 auto;
+  max-width: 500px;
+  z-index: 10;
+}
+
+@media screen and (max-width: 500px) {
+  .search-box {
+    max-width: 320px;
+  }
+
+  .search-result {
+    width: 320px;
+  }
 }

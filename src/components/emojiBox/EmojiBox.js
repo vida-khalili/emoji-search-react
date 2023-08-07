@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./EmojiBox.css";
 
 const EmojiBox = ({ emojiData }) => {
   const [pageCount, setPageCount] = useState(0);
-
+  const alertBox = useRef();
   useEffect(() => {
     setPageCount(calcPageCount());
   }, [emojiData]);
@@ -25,21 +25,36 @@ const EmojiBox = ({ emojiData }) => {
   const handlePageClick = (item) => {
     let NewActivePageNumber = item;
     setActivePageNumber(NewActivePageNumber);
-    console.log("activePageNumber:", activePageNumber);
   };
 
+  const handleCopy = (symbol) => {
+    navigator.clipboard.writeText(symbol);
+    alertBox.current.style.display = "block";
+    setTimeout(() => {
+      alertBox.current.style.display = "none";
+    }, 1000);
+  };
   return (
     <React.Fragment>
-      <div className="emoji-box ms-auto me-auto d-flex flex-wrap justify-content-center">
+      <div className="emoji-box ms-auto me-auto d-flex flex-wrap justify-content-center position-relative">
         {emojiData
           .slice(110 * activePageNumber - 110, 110 * activePageNumber)
           .map((item, index) => {
             return (
-              <div key={index} className="emoji-item p-1">
+              <div
+                key={index}
+                className="emoji-item p-1"
+                onClick={() => {
+                  handleCopy(item.symbol);
+                }}
+              >
                 {item.symbol}
               </div>
             );
           })}
+        <div className="copy-alert alert alert-primary" ref={alertBox}>
+          emoji copied to clipboard
+        </div>
       </div>
       <nav aria-label="Page navigation example" className="mt-3 ">
         <ul className="pagination ms-auto me-auto justify-content-center d-flex flex-wrap">
