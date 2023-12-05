@@ -10,7 +10,7 @@ function App() {
 
   const fetchApi = async () => {
     const response = await fetch(
-      "https://run.mocky.io/v3/b86e5b36-2f73-4c3d-a06d-da1438fea4cf"
+      "https://run.mocky.io/v3/4f002ced-dfa0-49a3-a7fe-b0f504c4665d"
     );
     const emojiData = await response.json();
     setEmojiData(emojiData);

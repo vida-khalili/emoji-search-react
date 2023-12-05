@@ -1,4 +1,4 @@
-import { useState, useReducer, useEffect, useContext } from "react";
+import { useState } from "react";
 
 import "./Pagination.css";
 
