@@ -64,7 +64,7 @@ const SearchBox = ({ emojiData }) => {
           <BsSearch />
         </button>
       </div>
-      <div className="search-result   d-flex  align-items-center gap-3 p-1">
+      <div className="search-result  d-flex  align-items-center gap-3 p-2">
         {result.length > 0
           ? result.map((emoji, index) => {
               return (

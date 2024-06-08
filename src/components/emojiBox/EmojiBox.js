@@ -82,7 +82,6 @@ const EmojiBox = ({ emojiData }) => {
           })}
         </ul>
       </nav>
-      {/* <Pagination pageCount={pageCount} /> */}
     </React.Fragment>
   );
 };

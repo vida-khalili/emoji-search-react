@@ -6,19 +6,11 @@ import EmojiBox from "../emojiBox/EmojiBox";
 import Loading from "../loading/Loading";
 import emojiDataJson from "../../data/emojiList.json";
 function App() {
-  const [emojiData, setEmojiData] = useState(emojiDataJson);
+  const [emojiData, setEmojiData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchApi = async () => {
-    const response = await fetch(
-      "https://run.mocky.io/v3/0450d557-dc1d-484e-981b-bb5a547ec99c"
-    );
-    const emojiData = await response.json();
-    setEmojiData(emojiData);
-    setLoading(false);
-  };
-
   useEffect(() => {
+    setEmojiData(emojiDataJson);
     setLoading(false);
   }, []);
   return (
